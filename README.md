@@ -1,12 +1,64 @@
-# React + Vite
+# RAG News Chatbot - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend user interface for a Retrieval-Augmented Generation (RAG) chatbot. It is a modern, responsive single-page application built with React.
 
-Currently, two official plugins are available:
+The frontend is responsible for:
+- Providing a clean and intuitive chat interface.
+- Managing user sessions via `localStorage`.
+- Communicating with the backend in real-time using WebSockets.
+- Displaying streaming responses from the AI chatbot.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Final Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Component         | Technology                               | Justification                                                                                              |
+| ----------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Framework**     | React (with Vite)                        | A modern, fast, and powerful library for building component-based user interfaces.                         |
+| **Styling**       | SCSS                                     | A CSS preprocessor that allows for more organized and maintainable styles with variables and nesting.      |
+| **Real-time Chat**| Socket.IO Client                         | The client-side library for establishing and managing the WebSocket connection with the backend server.    |
+| **Deployment**    | Render.com                               | Offers a free and easy-to-use platform for deploying static sites with seamless GitHub integration.        |
+
+---
+
+## Project Setup & Running Locally
+
+### Prerequisites
+- Node.js (v20.19+ recommended)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/<your-username>/news-rag-chatbot-frontend.git
+cd news-rag-chatbot-frontend
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Set Up Environment Variables
+Create a `.env` file in the root of the project. This file tells the frontend where to find the backend server.
+```ini
+# .env
+
+# URL of the running backend server
+VITE_BACKEND_URL="http://localhost:3001"
+```
+**Note:** Vite requires environment variables to be prefixed with `VITE_`.
+
+### 4. Start the Frontend Development Server
+Make sure your backend server is running first.
+```bash
+npm run dev
+```
+The application will open in your browser, usually at `http://localhost:5173`.
+
+---
+
+## Key Features
+
+- **Real-time Streaming:** Bot responses are displayed word-by-word as they are generated, providing an interactive and responsive user experience.
+- **Session Persistence:** The chat history is saved per session. If you reload the page, your conversation is restored from the backend.
+- **Session Reset:** A "Reset" button allows the user to clear the current session and start a new conversation.
+- **Modern UI:** A clean, responsive, and visually appealing interface with a "frosted glass" design and a subtle background pattern.
