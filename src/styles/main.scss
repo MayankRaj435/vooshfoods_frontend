@@ -1,0 +1,205 @@
+/* Import a clean, modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Define a color palette using CSS variables for easy changes */
+:root {
+  --background-color: #f4f7f9;
+  --container-bg: #ffffff;
+  --header-bg: #ffffff;
+  --header-text: #1a202c;
+  --subheader-text: #718096;
+  --chat-window-bg: #f9fafb;
+  --user-bubble-bg: linear-gradient(135deg, #4A90E2 0%, #50E3C2 100%);
+  --bot-bubble-bg: #edf2f7;
+  --bot-bubble-text: #2d3748;
+  --input-bg: #ffffff;
+  --input-border: #e2e8f0;
+  --input-focus-border: #4A90E2;
+  --button-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--header-text);
+  
+  /* --- NEW BACKGROUND --- */
+  /* A beautiful, soft gradient that fills the entire screen */
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  min-height: 100vh;
+  /* Center the app container vertically for a better look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  /* Set a fixed height and allow for responsive width */
+  height: 90vh;
+  max-height: 800px;
+  width: 90vw;
+  max-width: 800px;
+  
+  /* --- NEW "FROSTED GLASS" EFFECT --- */
+  background: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* A more pronounced shadow */
+  backdrop-filter: blur(12px); /* The blur effect */
+  -webkit-backdrop-filter: blur(12px); /* For Safari compatibility */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18); /* A subtle border to define the edge */
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--container-bg);
+  box-shadow: 0 10px 25px -5px var(--shadow-color), 0 10px 10px -5px var(--shadow-color);
+  border-radius: 12px;
+  overflow: hidden;
+  /* Add a subtle border for a more defined look on some backgrounds */
+  border: 1px solid var(--input-border);
+}
+
+.app-header {
+  background-color: var(--header-bg);
+  padding: 20px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--input-border);
+  flex-shrink: 0;
+
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--header-text);
+  }
+  p {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--subheader-text);
+  }
+}
+
+.chat-window {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  /* --- NEW BACKGROUND FOR THE CHAT AREA --- */
+  /* A slightly darker base color to make the pattern visible */
+  background-color: #e5e7eb; 
+  
+  /* A subtle, repeating dot pattern created with a radial gradient */
+  background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0);
+  background-size: 25px 25px; /* Controls the spacing of the dots */
+}
+.message {
+  display: flex;
+  max-width: 80%;
+
+  .message-bubble {
+    padding: 12px 18px;
+    border-radius: 20px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px var(--shadow-color);
+  }
+}
+
+.user-message {
+  align-self: flex-end;
+  .message-bubble {
+    background: var(--user-bubble-bg);
+    color: var(--button-text);
+    border-bottom-right-radius: 6px;
+  }
+}
+
+.bot-message {
+  align-self: flex-start;
+  .message-bubble {
+    background-color: var(--bot-bubble-bg);
+    color: var(--bot-bubble-text);
+    border-bottom-left-radius: 6px;
+  }
+}
+
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  flex-shrink: 0;
+
+  .reset-button {
+    padding: 10px 16px;
+    border: 1px solid var(--input-border);
+    background-color: transparent;
+    color: var(--subheader-text);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: #f7fafc;
+      border-color: #cbd5e0;
+    }
+  }
+
+  .input-form {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    input {
+      flex-grow: 1;
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s ease-in-out;
+      &:focus {
+        outline: none;
+        border-color: var(--input-focus-border);
+        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+      }
+    }
+
+    .send-button {
+      border: none;
+      background: var(--user-bubble-bg);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
