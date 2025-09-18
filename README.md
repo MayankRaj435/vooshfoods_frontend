@@ -28,7 +28,7 @@ The frontend is responsible for:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/news-rag-chatbot-frontend.git
+git clone https://github.com/MayankRaj435/news-rag-chatbot-frontend.git
 cd news-rag-chatbot-frontend
 ```
 
